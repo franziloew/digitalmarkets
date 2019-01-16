@@ -1,0 +1,252 @@
+---
+title: "Ökonomie digitaler Märkte - Übung 1"
+subtitle: "Grundlagen I Mikroökonomie"
+author: Franziska Löw
+date: 18.01.2019
+output: 
+  beamer_presentation:
+    slide_level: 2
+    theme: "CambridgeUS"
+    colortheme: "dolphin"
+    fonttheme: "structurebold"
+    fig_caption: false
+header-includes:
+- \usepackage{amsmath}
+- \usepackage[utf8]{inputenc}
+- \usepackage{tcolorbox}
+- \usepackage{booktabs}
+- \usepackage{longtable}
+- \usepackage{array}
+- \usepackage{multirow}
+- \usepackage{wrapfig}
+- \usepackage{float}
+- \usepackage{colortbl}
+- \usepackage{pdflscape}
+- \usepackage{tabu}
+- \usepackage{threeparttable}
+- \usepackage{threeparttablex}
+- \usepackage[normalem]{ulem}
+- \usepackage{makecell}
+- \usepackage{xcolor}
+    
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(warning = F, message = F)
+
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+```
+
+## Vorbemerkungen
+
+**Prof. Dr. Ralf Dewenter**
+
+Professur für Industrieökonomik
+
+**Raum:** 2124 (H1)
+
+**Email:** ralf.dewenter@hsu-hh.de
+
+**Homepage:** www.hsu-hh.de/ioek
+
+Sprechstunde: nach Vereinbarung
+
+\underline{Verantw. Wiss. Mitarbeiter \& Übungsleiter}
+
+Franziska Löw (loewf@hsu-hh.de)
+Sprechstunden: nach Vereinbarung
+
+## Grobgliederung
+
+```{r echo=FALSE}
+data_frame(
+  Datum = c("18.01.2019","01.02.2019","15.02.2019","01.03.2019","15.03.2019"),
+  Thema = c("mikroökonomische Grundlagen 1",
+            "mikroökonomische Grundlagen 2",
+            "monopolistische Plattformen",
+            "Cournot Wettbewerb auf Plattformmärkten",
+            "Wiederholung / Übungsklausur"
+           ),
+  Problemset = c("", "Problemset 1", "Problemset 2",
+                 "Problemset 3", "Übungsklausur")
+  ) %>%
+  kable("latex", booktabs = T)
+```
+
+## Literatur
+
+**Plichtlektüre:**
+
+\textcolor{blue}{Dewenter / Rösch (2014):} Einführung in die neue Medienökonomik (**Als eBook in der Bibliothek vorhanden!**)
+
+**Zusätzlich empfohlen:**
+
+\textcolor{blue}{Rochet \& Tirole (2003):} Platform Competition in Two-Sided Markets. Journal of the European Economic Association
+
+\textcolor{blue}{Armstrong (2006):} Competition in Two-Sided Markets. The RAND Journal of Economics
+
+\textcolor{blue}{Evans (2003):} The Antitrust Economics of Multi-Sided Platform Markets. Yale Journal on Regulation
+
+# Grundlagen: Mikroökonomie
+
+## Grundlagen: Mikroökonomie
+
+1. Externalitäten
+
+2. Netzwerkeffekte
+
+3. Marktzutrittsbarrieren
+
+## Externalitäten
+
+\begin{tcolorbox}[colback=green!5,colframe=green!40!black]
+Eine Externalität (auch externer Effekt) beschreibt die Kosten oder den Nutzen ökonomischer Entscheidungen auf einen unbeteiligten Marktteilnehmer.
+\end{tcolorbox}
+
+* **Negativ**
+  
+    * Umweltverschmutzung
+    * Lärmbelästigung
+    * Passivrauchen
+    * ...
+  
+* **Positiv**
+  
+    * öffentliche Forschung & Entwicklung (ohne Patent)
+    * Facebook Nutzer
+    * ...
+
+## Netwerkeffekte
+
+\begin{tcolorbox}[colback=green!5,colframe=green!40!black]
+Netzwerkeffekte sind externe Effekte, bei denen der Wert eines Produktes von der Größe eines Netzwerkes (der Nutzer) abhängt.
+\end{tcolorbox}
+
+* **Direkte** Netzwerkeffekte
+  
+    * Nutzen hängt von der Größe des Netzwerks auf der selben Marktseite ab.
+    * Kommunikationsmedien (Telefon), Soziale Netzwerke,
+    * Kritische Masse, Lock-in-Effekte (DVD-BluRay), Wechselkosten (Xbox, Playstation)
+    * häufig hohe Konzentration
+
+  
+* **Indirekte** Netzwerkeffekte
+  
+    * Nutzen hängt von der Größe eines anderen Netzwerks (der anderen Marktseite) ab.
+    * Programmierer-Softwarenutzer
+    * Rezipienten-Werbekunden
+    * häufig zwei(mehr-)seitige Märkte
+    
+
+## Direkte Netzwerkeffekte
+
+* externe Effekte die sowohl positiv, als auch negativ sein können.
+
+* nachfrageseitige Größenvorteile/-nachteile
+
+* positiv:
+
+$$
+\begin{aligned}
+u_i(n+1)>u_i(n)
+\end{aligned}
+$$
+
+* negativ:
+
+$$
+\begin{aligned}
+u_i(n+1)<u_i(n)
+\end{aligned}
+$$
+
+## Monopol mit direkten Netzeffekten
+
+* Die Zahlungsbereitschaft wächst mit der Anzahl der Konsumenten, die das Produkt ebenfalls konsumieren.
+* Netzwerkeffekt: $0\leq\alpha\leq1$
+
+$$
+\begin{aligned}
+p=1-(1-\alpha)q
+\end{aligned}
+$$
+Gewinnfunktion:
+
+$$
+\begin{aligned}
+\pi=(1-(1-\alpha)q)q
+\end{aligned}
+$$
+
+------------------------
+
+FOC: $\frac{\delta \pi}{\delta q}\overset{!}=0$
+
+$$
+\begin{aligned}
+q=\frac{1}{2(1-\alpha)}
+\end{aligned}
+$$
+
+Mit zunehmendem Netzeffekt $\alpha \uparrow$:
+
+  * steigt die angebotene Menge $q \uparrow$ 
+    
+  * Preis verändert sich nicht, da $p=\frac{1}{2}$
+    
+$$
+\begin{aligned}
+\pi=\frac{1}{4(1-\alpha)}
+\end{aligned}
+$$
+
+## Marktzutrittsbarrieren
+
+**Bedeutung:**
+
+* Geringere Marktzutrittsbarrieren (MZB) bedeuten mehr Wettbewerb, denn..
+    
+    * ...etablierte Unternehmen müssen bei ihren Entscheidungen auch die Möglichkeit des Markteintrittes – also des potenziellen Wettbewerbs  - berücksichtigen. 
+    * ...je schwieriger der Marktzutritt ist, desto freier können Unternehmen ihre Entscheidungen treffen.
+    
+**Ursache:**
+
+1. Strukturelle MZB
+2. Institutionelle MZB
+3. Strategische MZB
+
+## Strukturelle MZB
+
+Die Struktur des Marktes oder die Eigenschaften des Produktes stellen eine MZB dar: 
+
+* Natürliche Monopole
+
+* Hohe Skalen- oder Lerneffekte
+
+* allg. hohe versunkene Kosten (hohe Anfangsinvestition notwendig)
+
+* Netzwerkeffekte: 
+    
+    * Unternehmen müssen eine kritische Masse erreichen, damit sich das Produkt auf dem Markt etablieren kann.
+    * Bei indirekten Netzwerkeffekten muss das Chicken-Egg-Problem gelöst werden.
+    * Lock-in Effekte binden die Konsumenten an einen bereits etablierten Anbieter. 
+    * Aber: Geringer Wechselkosten verringern die Kosten des Markteintrittes
+
+## Institutionelle & Strategische MZB
+
+Institutionelle MZB: Staatliche Maßnahmen bzw. regulatorische Bedingungen:
+
+* Lizenzanforderungen (z.B. Taxi)
+* Rundfunkstaatsvertrag 
+* Regulierung des Postmarktes oder des Fernverkehr-Marktes. 
+
+Strategische MZB: strategisches Verhalten etablierter Unternehmen:
+
+* Predatory Pricing (Verdrängungspreise)
+* Vertikale Verträge (Marktverschluss)
+* Thema Netzneutralität: inwiefern führt ein nicht-neutrales Internet dazu, dass es zur Diskriminierung bestimmter Inhalte kommt? 
+
+
+
