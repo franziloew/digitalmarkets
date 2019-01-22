@@ -1,0 +1,75 @@
+---
+title: "Ökonomik digitaler Märkte"
+subtitle: "Problemset 1: mikroökonomische Grundlagen"
+author: Franziska Löw
+date: 01.02.2019
+output: 
+  beamer_presentation:
+    slide_level: 2
+    theme: "CambridgeUS"
+    colortheme: "dolphin"
+    fonttheme: "structurebold"
+    fig_caption: false
+    fig_width: 4.4
+    fig_height: 2.8
+header-includes:
+- \usepackage{amsmath}
+- \usepackage[utf8]{inputenc}
+- \usepackage{tcolorbox}
+    
+---
+
+```{r include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(patchwork)
+library(shiny)
+library(htmlwidgets)
+
+library(RColorBrewer)
+
+col <- brewer.pal(6, "Set1")
+
+```
+
+## Aufgabe 1: Vollständiger Wettbewerb
+
+Nachfragefunktion: $Q^d=30-5p$
+
+Kostenfunktion: $C(Q) = 2Q$
+
+\begin{enumerate}
+  \item Berechnen Sie die Angebotsfunktion, unter der Annahme, dass die Kostenfunktion für alle Firmen gleich ist. 
+\item Zeigen Sie die Nachfrage- und Angebotsfunktion grafisch in einem Koordinatensystem und interpretieren Sie diese Abbildung.
+  \item Berechnen Sie Menge und Preis im Marktgleichgewicht.
+  \item Berechnen Sie die Produzentenrente und die Konsumentenrente
+\end{enumerate}
+
+## Aufgabe 2: Monopolmodelle
+
+Nachfragefunktion: $Q^d=30-5p$
+
+Kostenfunktion: $C(Q) = 2Q$
+
+1. Lösen Sie das Maximierungsproblem des Monopolisten über den **Preis**. Geben Sie sowohl die optimalen Preise, als auch die optimale Menge an.
+
+2. Lösen Sie das Maximierungsproblem des Monopolisten über die **Menge**. Geben Sie sowohl die optimalen Preise, als auch die optimale Menge an. 
+
+  a. Zeigen Sie Ihre Ergebnisse anhand einer Grafik.
+  
+  b. Berechnen Sie die Produzentenrente und die Konsumentenrente.
+
+## Aufgabe 3: Duopolmodelle (Cournot)
+
+Nachfragefunktion: $Q^d=30-5p$
+
+Kostenfunktion: $C(Q) = 2Q$
+
+**Annahmen**
+
+  * 2 homogene Firmen mit identischen Kostenfunktionen
+  * Unternehmen wählen ihre Mengen simultan
+  
+\begin{enumerate}
+  \item Lösen Sie das Cournot-Nash-Gleichgewicht. Geben Sie sowohl die optimalen Preise, als auch die optimale Menge sowie die Gesamtmenge auf dem Markt an.
+\end{enumerate}
