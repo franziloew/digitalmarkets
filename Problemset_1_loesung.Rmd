@@ -1,0 +1,479 @@
+---
+title: "Ökonomik digitaler Märkte"
+subtitle: "Problemset 1: mikroökonomische Grundlagen - Lösung"
+author: Franziska Löw
+date: 18.01.2018
+output: 
+  beamer_presentation:
+    theme: "CambridgeUS"
+    colortheme: "dolphin"
+    fonttheme: "structurebold"
+    fig_caption: false
+header-includes:
+- \usepackage{amsmath}
+- \usepackage[utf8]{inputenc}
+
+---
+
+```{r include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(patchwork)
+library(RColorBrewer)
+
+theme_set(
+  theme_bw(base_size = 8) +
+    theme(
+      axis.text.x = element_text(face="bold", size=10),
+      axis.text.y = element_text(face="bold", size=10)
+))
+
+col <- brewer.pal(5,"Dark2")
+```
+
+# Vollständiger Wettbewerb
+
+## Aufgabe 1: Vollständiger Wettbewerb
+
+Nachfragefunktion: $Q^d=30-5p$
+
+Kostenfunktion: $C(Q) = 2Q$
+
+1. Berechnen Sie die Angebotsfunktion, unter der Annahme, dass die Kostenfunktion für alle Firmen gleich ist. 
+
+--------------------------------------------------
+
+1. Berechnen Sie die Angebotsfunktion, unter der Annahme, dass die Kostenfunktion für alle Firmen gleich ist. 
+
+$$
+\frac{\delta C(Q)}{Q} =2 =GK
+$$
+
+--------------------------------------------------
+
+2. Zeigen Sie die Nachfrage- und Angebotsfunktion grafisch in einem Koordinatensystem und interpretieren Sie diese Abbildung.
+
+--------------------------------------------------
+
+2. Zeigen Sie die Nachfrage- und Angebotsfunktion grafisch in einem Koordinatensystem und interpretieren Sie diese Abbildung.
+
+```{r include=FALSE}
+# Define Function
+p <- function(Q){
+  6-((1/5)*Q)
+}
+
+# Simulate Data
+x <- c()
+count <- 1
+
+for (i in seq(-50,50,0.1)) {
+  x[count] <- p(i)
+  count <- count + 1
+}
+
+# Create Dataframe
+df <- data.frame(Q= seq(-50,50,0.1),
+                 p = x)
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=3, fig.align='center'}
+c <- 2
+
+p1 <- df %>% ggplot(aes(Q,p)) + geom_line(color=col[1]) +
+  scale_x_continuous(expand = c(0, 0), breaks = c(0,20,30),
+                    limits = c(0,35), labels = c("0","Q*","30")) +
+  scale_y_continuous(expand = c(0, 0), breaks = c(0,2,6),
+                     limits = c(0,8), labels = c("0","p*","6")) +
+  annotate("text",3, 6, vjust = -1, label = "D",
+           color=col[1]) +
+  # Supply
+  geom_hline(yintercept = c, color=col[2]) +
+  annotate("text",31, c, vjust = -1,
+           label = "S=MC", color=col[1]) +
+  geom_vline(xintercept = 20, linetype = 2,
+             color="grey50")
+
+ggsave(plot = p1, filename = "figs/plot-set1-1.png",
+      width = 3.5, height = 3.8)
+```
+
+\begin{center}
+\begin{minipage}{.5\textwidth}
+  \includegraphics[width=\textwidth]{figs/plot-set1-1.png}
+\end{minipage}
+\end{center}
+
+--------------------------------------------------------
+
+2. Berechnen Sie Menge und Preis im Marktgleichgewicht.
+
+--------------------------------------------------------
+
+2. Berechnen Sie Menge und Preis im Marktgleichgewicht.
+
+```{r fig.align='center', fig.height=3, fig.width=3, message=FALSE, warning=FALSE, include=FALSE}
+p1 <- df %>% ggplot(aes(Q,p)) + geom_line(color=col[1]) +
+  scale_x_continuous(expand = c(0, 0), breaks = c(0,20,30),
+                    limits = c(0,35), labels = c("0","Q*=20","30")) +
+  scale_y_continuous(expand = c(0, 0), breaks = c(0,2,6),
+                     limits = c(0,8), labels = c("0","p*=2","6")) +
+  annotate("text",3, 6, vjust = -1, label = "D",
+           color=col[1]) +
+  # Supply
+  geom_hline(yintercept = c, color=col[2]) +
+  annotate("text",31, c, vjust = -1,
+           label = "S=MC", color=col[2]) +
+  geom_vline(xintercept = 20, linetype = 2,
+             color="grey50")
+
+ggsave(plot = p1, filename = "figs/plot-set1-2.png",
+      width = 3.5, height = 3.8)
+```
+
+\begin{minipage}{.5\textwidth}
+  $$p^*=MC=2$$
+  
+  $$Q^*=30-5*2=20$$
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+  \includegraphics[width=\textwidth]{figs/plot-set1-2.png}
+\end{minipage}
+
+-------------------------------------------------------------
+
+3. Berechnen Sie die Produzentenrente und die Konsumentenrente
+
+-------------------------------------------------------------
+
+3. Berechnen Sie die Produzentenrente und die Konsumentenrente
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=3, fig.align='center'}
+p1 <- df %>% ggplot(aes(Q,p)) + geom_line(color=col[1]) +
+  scale_x_continuous(expand = c(0, 0), breaks = c(0,20,30),
+                    limits = c(0,35), labels = c("0","Q*=20","30")) +
+  scale_y_continuous(expand = c(0, 0), breaks = c(0,2,6),
+                     limits = c(0,8), labels = c("0","p*=2","6")) +
+  annotate("text",3, 6, vjust = -1, label = "D",
+           color=col[1]) +
+  # Supply
+  geom_hline(yintercept = c, color=col[2]) +
+  annotate("text",31, c, vjust = -1,
+           label = "S=MC", color=col[2]) +
+  geom_vline(xintercept = 20, linetype = 2,
+             color="grey50") +
+  annotate("text",8,3,label="KR", size=8,
+           color=col[4])
+
+ggsave(plot = p1, filename = "figs/plot-set1-3.png",
+      width = 3.5, height = 3.8)
+```
+
+\begin{minipage}{.5\textwidth}
+  $$KR=\frac{1}{2}(6-2)20=40$$
+  $$PR=\sum\pi=0$$
+ $$W=KR+PR=40$$
+
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+  \includegraphics[width=\textwidth]{figs/plot-set1-3.png}
+\end{minipage}
+
+# Monopolmodel
+
+## Aufgabe 2: Monopolmodel
+
+Nachfragefunktion: $Q^d=30-5p$
+
+Kostenfunktion: $C(Q) = 2Q$
+
+1. Lösen Sie das Maximierungsproblem des Monopolisten über den **Preis**. Geben Sie sowohl die optimalen Preise, als auch die optimale Menge an.
+
+--------------------------------------------------------------
+
+1. Lösen Sie das Maximierungsproblem des Monopolisten über den **Preis**. Geben Sie sowohl die optimalen Preise, als auch die optimale Menge an.
+
+$$
+\pi^M(p)=pQ^d(p)-C(Q^d(p)) = p(30-5p)-2(30-5p)
+$$
+
+$$
+\frac{\delta\pi}{\delta p} =30-5p-5p+10 \overset{!}=0
+$$
+$$
+p^M=4
+$$
+$$
+Q^d(p^M=4)030-5*4=10=Q^M
+$$
+
+--------------------------------------------------------------
+
+2. Lösen Sie das Maximierungsproblem des Monopolisten über die **Menge**. Geben Sie sowohl die optimalen Preise, als auch die optimale Menge an. 
+
+--------------------------------------------------------------
+
+2. Lösen Sie das Maximierungsproblem des Monopolisten über die **Menge**. Geben Sie sowohl die optimalen Preise, als auch die optimale Menge an. 
+
+$$
+p(Q^d)=6-\frac{1}{5}Q^d
+$$
+$$
+\pi^M(Q)=p(Q)Q-C(Q) = (6-\frac{1}{5}Q)Q-2Q
+$$
+$$
+\frac{\delta\pi}{\delta Q}=6-\frac{1}{5}Q-\frac{1}{5}Q-2 \overset{!}=0
+$$
+$$
+Q^M=10
+$$
+
+$$
+p(Q=10)=6-\frac{1}{5}10=4=p^M
+$$
+
+--------------------------------------------------------------  
+  
+2.a. Zeigen Sie Ihre Ergebnisse anhand einer Grafik.
+
+```{r include=FALSE}
+# Define Function
+p <- function(Q){
+  6-((1/5)*Q)
+}
+
+r <- function(Q){
+  6-((2/5)*Q)
+}
+
+# Simulate Data
+x <- c()
+y <- c()
+count <- 1
+
+for (i in seq(-50,50,0.1)) {
+  x[count] <- p(i)
+  y[count] <- r(i)
+  count <- count + 1
+}
+
+# Create Dataframe
+df <- data.frame(Q= seq(-50,50,0.1),
+                 p = x, r = y)
+```
+
+```{r include=FALSE}
+p1 <- df %>% ggplot(aes(Q,p)) + geom_line(color=col[1]) +
+  geom_line(aes(Q,r), color = col[3]) +
+  scale_x_continuous(expand = c(0, 0), breaks = c(0,10,15,20,30),
+                    limits = c(0,35), 
+                    labels = c("0",expression(paste("Q"^"M","=10")),"15","Q*=20","30")) +
+  scale_y_continuous(expand = c(0, 0), breaks = c(0,2,4, 6),
+                     limits = c(0,8), 
+                     labels = c("0","p*=2", expression(paste("p"^"M","=4")), "6")) +
+  annotate("text",3, 6, vjust = -1, label = "D",
+           color=col[1]) +
+  # Supply
+  geom_hline(yintercept = c, color=col[2]) +
+  annotate("text",31, c, vjust = -1,
+           label = "S=MC", color=col[2]) +
+  geom_vline(xintercept = 20, linetype = 2,
+             color="grey70") +
+  # Monopol Solution
+  geom_vline(xintercept = 10, linetype = 2,
+             color="grey70") +
+  geom_hline(yintercept = 4, linetype = 2,
+             color="grey70") 
+
+
+ggsave(plot = p1, filename = "figs/plot-set1-4.png",
+      width = 3.5, height = 3.8)
+```
+
+\begin{center}
+\begin{minipage}{.5\textwidth}
+  \includegraphics[width=\textwidth]{figs/plot-set1-4.png}
+\end{minipage}
+\end{center}
+
+--------------------------------------------------------------  
+  
+2.b. Berechnen Sie die Produzentenrente und die Konsumentenrente.
+
+```{r include=FALSE}
+p1 <- df %>% ggplot(aes(Q,p)) + 
+  # Demand
+  geom_line(color=col[1]) +
+  annotate("text",3, 6, vjust = -1, label = "D", 
+           color=col[1]) +
+  # MR
+  geom_line(aes(Q,r), color = col[3]) +
+  # Supply
+  geom_hline(yintercept = c, color=col[2]) +
+  annotate("text",31, c, vjust = -1,
+           label = "S=MC", color=col[2]) +
+  # Axis
+  scale_x_continuous(expand = c(0, 0), breaks = c(0,10,15,20,30),
+                    limits = c(0,35), 
+                    labels = c("0",expression(paste("Q"^"M","=10")),"15","Q*=20","30")) +
+  scale_y_continuous(expand = c(0, 0), breaks = c(0,2,4, 6),
+                     limits = c(0,8), 
+                     labels = c("0","p*=2", expression(paste("p"^"M","=4")), "6")) +
+  # Competitive solution
+  geom_vline(xintercept = 20, linetype = 2,
+             color="grey70") +
+  # Monopol Solution
+  geom_vline(xintercept = 10, linetype = 2,
+             color="grey70") +
+  geom_hline(yintercept = 4, linetype = 2,
+             color="grey70") +
+  # Wolhfahrt
+  annotate("text",13, 3, color=col[4],
+           label = "DWL") +
+  annotate("text",3.4, 3, color=col[4],
+           label = "PR") +
+  annotate("text",3.4, 4.8, color=col[4], 
+           label = "KR") 
+
+
+ggsave(plot = p1, filename = "figs/plot-set1-5.png",
+      width = 3.5, height = 3.8)
+```
+
+\begin{minipage}{.5\textwidth}
+  $$KR=\frac{1}{2}(6-4)10 = 10$$
+  
+  $$PR=2*10=20$$
+  $$W=KR+PR=30$$
+  
+  $$DWL=\frac{1}{2}(4-2)10 = 10$$
+
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+  \includegraphics[width=\textwidth]{figs/plot-set1-5.png}
+\end{minipage}
+
+#Duopolmodel (Cournot)
+
+## Aufgabe 3: Duopolmodel (Cournot)
+
+Nachfragefunktion: $Q^d=30-5p$
+
+Kostenfunktion: $C(Q) = 2Q$
+
+**Annahmen**
+
+  * 2 homogene Firmen mit identischen Kostenfunktionen
+  * Unternehmen wählen ihre Mengen simultan
+  
+1. Lösen Sie das Cournot-Nash-Gleichgewicht. Geben Sie sowohl die optimalen Preise, als auch die optimale Menge sowie die Gesamtmenge auf dem Markt an.
+
+---------------------------------------------------------------------
+  
+1. Lösen Sie das Cournot-Nash-Gleichgewicht. Geben Sie sowohl die optimalen Preise, als auch die optimale Menge sowie die Gesamtmenge auf dem Markt an.
+
+Gesamtmenge: $Q=q_1+q_2$
+
+Marktpreis: $p=6-\frac{q_1+q_2}{5}$
+
+Gewinnfuntionen:
+
+$$
+\pi_1(q_1,q_2)=p(q_1+q_2)q_1-C(q_1) = (6-\frac{q_1+q_2}{5})q_1-2q_1
+$$
+$$
+\pi_2(q_1,q_2)=p(q_1+q_2)q_2-C(q_2) = (6-\frac{q_1+q_2}{5})q_2-2q_2
+$$
+
+FOC: $\frac{\delta \pi_{ij}}{\delta q_{ij}}\overset{!}=0$
+
+---------------------------------------------------------------------
+
+```{r include=FALSE}
+# Define Function
+q1 <- function(q2){
+  10-((1/2)*q2)
+}
+
+q2 <- function(q1){
+  10-((1/2)*q1)
+}
+
+# Simulate Data
+x <- c()
+y <- c()
+count <- 1
+
+for (i in seq(-50,50,0.1)) {
+  x[count] <- q1(i)
+  y[count] <- q2(i)
+  count <- count + 1
+}
+
+# Create Dataframes
+# q1
+df1 <- data.frame(q2 = seq(-50,50,0.1),
+                 q1 = x)
+
+# q2
+df2 <- data.frame(q1 = seq(-50,50,0.1),
+                 q2 = y)
+```
+
+
+```{r echo=FALSE, fig.align='center', fig.height=4.5, fig.width=4, message=FALSE, warning=FALSE}
+p1 <- ggplot(df1, aes(q1,q2)) + geom_line(color=col[1]) +
+  geom_line(data=df2,aes(q1,q2), color=col[1]) +
+  scale_x_continuous(expand = c(0, 0),
+                     limits = c(0,25),
+                     breaks = c(0,10,20)) +
+  scale_y_continuous(expand = c(0, 0),
+                     limits = c(0,25),
+                     breaks = c(0,10,20)) +
+  # Add line labels
+  annotate("text",1, 20, parse=TRUE, 
+           label = as.character(expression("q"[1]))) +
+  annotate("text",20, 1, parse=TRUE, 
+           label = as.character(expression("q"[2]))) +
+  labs(x=expression("q"[1]), y=expression("q"[2]), 
+       title="") 
+
+ggsave(plot = p1, filename = "figs/plot-set1-6.png",
+       width = 4, height = 4.5)
+```
+
+\begin{minipage}{.5\textwidth}
+  $$q_1^*(q_2)=10-\frac{q_2}{2}$$
+  
+  $$q_2^*(q_1)=10-\frac{q_1}{2}$$
+
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+  \includegraphics[width=\textwidth]{figs/plot-set1-6.png}
+\end{minipage}
+
+---------------------------------------------------------------------
+
+$$
+q_1^*=q_2^* = \frac{20}{3}
+$$
+
+$$
+Q^c=q_1+q_2 = \frac{40}{3} = 13\frac{1}{3}
+$$
+
+$$
+p(Q^c)= 6 - \frac{Q^c}{5} = 6 - \frac{40}{15} = 3\frac{1}{3}
+$$
+
+$$
+\pi_1^c = \pi_2^c = \frac{80}{9}
+$$
+
+$$
+PR = \frac{80}{9} +\frac{80}{9} = \frac{160}{9}
+$$
+
+$$
+KR = \frac{1}{2}(6-\frac{10}{3})\frac{40}{3}=\frac{160}{9}
+$$
