@@ -1,0 +1,69 @@
+---
+title: "Ökonomik digitaler Märkte"
+subtitle: "Problemset 3: Monopolistische Plattform - Lösung"
+author: Franziska Löw
+date: 15.02.2018
+output: 
+  beamer_presentation:
+    slide_level: 2
+    theme: "CambridgeUS"
+    colortheme: "dolphin"
+    fonttheme: "structurebold"
+    fig_caption: false
+    fig_width: 4.4
+    fig_height: 2.8
+header-includes:
+- \usepackage{amsmath}
+- \usepackage[utf8]{inputenc}
+- \usepackage{tcolorbox}
+    
+---
+
+```{r include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(patchwork)
+library(shiny)
+library(htmlwidgets)
+
+library(RColorBrewer)
+
+col <- brewer.pal(6, "Set1")
+
+```
+
+## Aufgabe 1: Monopolistische Plattform I
+
+Ein Zeitungsmonopolist bedient die beiden Kundengruppen ‚Leser‘ und ‚Anzeigenkunden‘. $q$ sei die
+Menge an verkauften Zeitungen und $p$ der Preis pro Zeitung. $s$ sei die Menge der verkauften Anzeigen
+zum Preis $r$. Die variablen Kosten des Monopolisten sind $c1 = c2 = c$. Die Fixkosten betragen 0. Die
+inversen Nachfragen nach $q$ bzw. $s$ lauten:
+
+\begin{center}
+$p=1-q-0.2s$ und $r=1-s+1.2q$
+\end{center}
+
+\begin{enumerate}
+  \item Interpretieren Sie die angegebenen Nachfragefunktionen mit grafischer Hilfe.
+  \item Stellen Sie die Gewinnfunktion des monopolistischen Anbieters auf.
+  \item Bestimmen Sie die optimalen Mengen als Reaktion auf die jeweils andere Marktgröße.
+  \item Stellen Sie die optimalen Preise $p, r$ grafisch dar.
+  \item Berechnen Sie die optimalen Preise $p, r$ und Mengen $q, s$
+\end{enumerate}
+
+
+## Aufgabe 2: Monopolistische Plattform II
+
+Ein Zeitungsmonopolist bedient die beiden Kundengruppen ‚Leser‘ und ‚Anzeigenkunden‘. $q$ sei die
+Menge an verkauften Zeitungen und $p$ der Preis pro Zeitung. $s$ sei die Menge der verkauften Anzeigen
+zum Preis $r$. Die variablen Kosten des Monopolisten sind $c1 = c2 = 0$. Die Fixkosten betragen 0. Die
+inversen Nachfragen nach $q$ bzw. $s$ lauten:
+
+\begin{center}
+$p=1-q-0.2s$ und $r=1-s+1.2q$
+\end{center}
+
+\begin{enumerate}
+  \item Berechnen Sie die Konsumentenrente und die Produzentenrente.
+\end{enumerate}
+
