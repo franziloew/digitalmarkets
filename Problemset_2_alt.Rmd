@@ -1,0 +1,68 @@
+---
+title: "Ökonomik digitaler Märkte"
+subtitle: "Problemset 2: mikroökonomische Grundlagen"
+author: Franziska Löw
+date: 01.02.2018
+output: 
+  beamer_presentation:
+    slide_level: 2
+    theme: "CambridgeUS"
+    colortheme: "dolphin"
+    fonttheme: "structurebold"
+    fig_caption: false
+    fig_width: 4.4
+    fig_height: 2.8
+header-includes:
+- \usepackage{amsmath}
+- \usepackage[utf8]{inputenc}
+- \usepackage{tcolorbox}
+    
+---
+
+```{r include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(patchwork)
+library(shiny)
+library(htmlwidgets)
+
+library(RColorBrewer)
+
+col <- brewer.pal(6, "Set1")
+
+```
+
+## Aufgabe 1: Dorfman-Steiner-Bedingung
+
+In einem monopolistischen Markt für das Gut $x$ gilt die Nachfragekurve:
+
+$$x(p,A)=25-p+A^{0.5}$$
+mit $p =$ Preis des Gutes, $A =$ Werbemenge.
+
+Die Kostenfunktion lautet: 
+
+$$K(x,A)=10+5x+A$$ 
+
+Bestimmen Sie den Preis und die Menge des Monopolisten für das Gut $x$ sowie die optimale Werbemenge $A$.
+
+## Aufgabe 2: Direkte Netzerkeffekte
+
+Die Nutzen- und Nachfragefunktion eines monopolsitischen Anbieters von Festnetztelefonie hat folgende Form: 
+
+$$
+\begin{aligned}
+ U^x=
+ \begin{cases}
+  n(1-x)-p & \text{bei Anschluss} \\
+  0 & \text{ohne Anschluss}
+ \end{cases}
+\end{aligned}
+$$
+
+\begin{enumerate}
+  \item Was versteht man unter direkten Netzwerkeffekten. Warum liegen diese hier vor? 
+  \item Bestimmen Sie den indifferenten Konsumenten und skizzieren Sie die Nachfragekurve.
+Erklären und zeigen Sie, dass es mehrere Gleichgewichte gibt.
+  \item Bestimmen Sie die Menge, den Preis und den Gewinn des Monopolisten.
+  \item Interpretieren Sie die Ergebnisse.
+\end{enumerate}

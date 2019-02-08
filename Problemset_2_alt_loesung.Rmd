@@ -1,0 +1,128 @@
+---
+title: "Ökonomik digitaler Märkte"
+subtitle: "Problemset 2: mikroökonomische Grundlagen - Lösung"
+author: Franziska Löw
+date: 01.02.2018
+output: 
+  beamer_presentation:
+    slide_level: 2
+    theme: "CambridgeUS"
+    colortheme: "dolphin"
+    fonttheme: "structurebold"
+    fig_caption: false
+    fig_width: 4.4
+    fig_height: 2.8
+header-includes:
+- \usepackage{amsmath}
+- \usepackage[utf8]{inputenc}
+- \usepackage{tcolorbox}
+    
+---
+
+```{r include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(patchwork)
+library(shiny)
+library(htmlwidgets)
+
+library(RColorBrewer)
+
+col <- brewer.pal(6, "Set1")
+
+```
+
+# Werbung
+
+## Aufgabe 1: Dorfman-Steiner-Bedingung
+
+In einem monopolistischen Markt für das Gut $x$ gilt die Nachfragekurve:
+
+$$x(p,A)=25-p+A^{0.5}$$
+mit $p =$ Preis des Gutes, $A =$ Werbemenge.
+
+Die Kostenfunktion lautet: 
+
+$$K(x,A)=10+5x+A$$ 
+
+Bestimmen Sie den Preis und die Menge des Monopolisten für das Gut $x$ sowie die optimale Werbemenge $A$.
+
+-------------------------------------------------------------
+
+Gewinnfunktion:
+
+$$
+\pi=(p-c)x(p,A)-10-A
+$$
+$$\frac{\delta\pi}{\delta p}=30-2p+A^{0.5} \overset{!}=0$$
+
+$$\frac{\delta\pi}{\delta A}=\frac{p-5}{2A^{0.5}} \overset{!}=0$$
+
+$\frac{\delta\pi}{\delta p}$ und $\frac{\delta\pi}{\delta A}$ nach $A$ und $p$ auflösen ergibt:
+
+\begin{center}
+$A=\frac{400}{9}$, $p=\frac{55}{3}$, $x=\frac{40}{3}$
+\end{center}
+
+# Netzwerkeffekte
+
+## Aufgabe 2: Direkte Netzerkeffekte
+
+Die Nutzen- und Nachfragefunktion eines monopolsitischen Anbieters von Festnetztelefonie hat folgende Form: 
+
+$$
+\begin{aligned}
+ U^x=
+ \begin{cases}
+  n(1-x)-p & \text{bei Anschluss} \\
+  0 & \text{ohne Anschluss}
+ \end{cases}
+\end{aligned}
+$$
+
+\begin{enumerate}
+  \item Was versteht man unter direkten Netzwerkeffekten. Warum liegen diese hier vor? 
+  \item Bestimmen Sie den indifferenten Konsumenten und skizzieren Sie die Nachfragekurve.
+Erklären und zeigen Sie, dass es mehrere Gleichgewichte gibt.
+  \item Bestimmen Sie die Menge, den Preis und den Gewinn des Monopolisten.
+  \item Interpretieren Sie die Ergebnisse.
+\end{enumerate}
+
+----------------------------------------------------------------
+
+(2) Bestimmen Sie den indifferenten Konsumenten und skizzieren Sie die Nachfragekurve. Erklären und zeigen Sie, dass es mehrere Gleichgewichte gibt.
+
+**Nutzen bei Konsum**: $U^x= n(1-x)-p$
+
+**Indifferenter Konsument**: $(1-\bar{x})\bar{x}-p=0$
+
+
+\begin{minipage}{0.5\textwidth}
+Nachfrage: $p=(1-\bar{x})\bar{x}$
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\includegraphics[scale=0.25]{figs/uebung2-1.png}
+\end{minipage}
+
+--------------------------------------------------------------
+
+(3) Bestimmen Sie die Menge, den Preis und den Gewinn des Monopolisten.
+
+\begin{minipage}{0.5\textwidth}
+Gewinn: $\pi=(1-x)x^2$
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\includegraphics[scale=0.3]{figs/uebung2-2.png}
+\end{minipage}
+
+$\frac{\delta \pi}{\delta x}=2(1-x)x-2x^2 \overset{!}=0$
+
+$x=\lbrace 0,\frac{2}{3} \rbrace$, $p=\lbrace 0,\frac{2}{9} \rbrace$, $\pi=\lbrace 0,\frac{4}{27} \rbrace$
+
+## Implikationen für Netzwerkunternehmen
+
+* Es muss eine kritische Masse erreicht werden, damit sich das Produkt auf dem Markt etabliert. 
+
+* Ausschlaggebend sind die Erwartungen der Konsumenten,
+
+* Wenn sich ein Produkt durchgesetzt hat, kann es zu "lock-in" Effekten kommen, da die Wechselkosten hoch sind. Strategische MZB!

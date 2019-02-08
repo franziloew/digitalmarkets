@@ -1,8 +1,8 @@
 ---
 title: "Ökonomik digitaler Märkte"
-subtitle: "Problemset 2: mikroökonomische Grundlagen"
+subtitle: "Problemset 2: Monopolistische Plattform - Lösung"
 author: Franziska Löw
-date: 01.02.2018
+date: 15.02.2019
 output: 
   beamer_presentation:
     slide_level: 2
@@ -32,20 +32,7 @@ col <- brewer.pal(6, "Set1")
 
 ```
 
-## Aufgabe 1: Dorfman-Steiner-Bedingung
-
-In einem monopolistischen Markt für das Gut $x$ gilt die Nachfragekurve:
-
-$$x(p,A)=25-p+A^{0.5}$$
-mit $p =$ Preis des Gutes, $A =$ Werbemenge.
-
-Die Kostenfunktion lautet: 
-
-$$K(x,A)=10+5x+A$$ 
-
-Bestimmen Sie den Preis und die Menge des Monopolisten für das Gut $x$ sowie die optimale Werbemenge $A$.
-
-## Aufgabe 2: Direkte Netzerkeffekte
+## Aufgabe 1: Monopolist: direkte Netzerkeffekte
 
 Die Nutzen- und Nachfragefunktion eines monopolsitischen Anbieters von Festnetztelefonie hat folgende Form: 
 
@@ -66,3 +53,39 @@ Erklären und zeigen Sie, dass es mehrere Gleichgewichte gibt.
   \item Bestimmen Sie die Menge, den Preis und den Gewinn des Monopolisten.
   \item Interpretieren Sie die Ergebnisse.
 \end{enumerate}
+
+## Aufgabe 2: Monopolistische Plattform I
+
+Ein Zeitungsmonopolist bedient die beiden Kundengruppen ‚Leser‘ und ‚Anzeigenkunden‘. $q$ sei die
+Menge an verkauften Zeitungen und $p$ der Preis pro Zeitung. $s$ sei die Menge der verkauften Anzeigen
+zum Preis $r$. Die variablen Kosten des Monopolisten sind $c1 = c2 = c$. Die Fixkosten betragen 0. Die
+inversen Nachfragen nach $q$ bzw. $s$ lauten:
+
+\begin{center}
+$p=1-q-0.2s$ und $r=1-s+1.2q$
+\end{center}
+
+\begin{enumerate}
+  \item Interpretieren Sie die angegebenen Nachfragefunktionen mit grafischer Hilfe.
+  \item Stellen Sie die Gewinnfunktion des monopolistischen Anbieters auf.
+  \item Bestimmen Sie die optimalen Mengen als Reaktion auf die jeweils andere Marktgröße.
+  \item Stellen Sie die optimalen Preise $p, r$ grafisch dar.
+  \item Berechnen Sie die optimalen Preise $p, r$ und Mengen $q, s$
+\end{enumerate}
+
+
+## Aufgabe 3: Monopolistische Plattform II
+
+Ein Zeitungsmonopolist bedient die beiden Kundengruppen ‚Leser‘ und ‚Anzeigenkunden‘. $q$ sei die
+Menge an verkauften Zeitungen und $p$ der Preis pro Zeitung. $s$ sei die Menge der verkauften Anzeigen
+zum Preis $r$. Die variablen Kosten des Monopolisten sind $c1 = c2 = 0$. Die Fixkosten betragen 0. Die
+inversen Nachfragen nach $q$ bzw. $s$ lauten:
+
+\begin{center}
+$p=1-q-0.2s$ und $r=1-s+1.2q$
+\end{center}
+
+\begin{enumerate}
+  \item Berechnen Sie die Konsumentenrente und die Produzentenrente.
+\end{enumerate}
+
