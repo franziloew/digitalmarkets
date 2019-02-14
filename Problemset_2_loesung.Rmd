@@ -32,7 +32,60 @@ col <- brewer.pal(6, "Set1")
 
 ```
 
-## Aufgabe 1: Monopolistische Plattform I
+## Aufgabe 1: Monopolist: direkte Netzerkeffekte
+
+Die Nutzen- und Nachfragefunktion eines monopolsitischen Anbieters von Festnetztelefonie hat folgende Form: 
+
+$$
+\begin{aligned}
+ U^x=
+ \begin{cases}
+  n(1-x)-p & \text{bei Anschluss} \\
+  0 & \text{ohne Anschluss}
+ \end{cases}
+\end{aligned}
+$$
+
+\begin{enumerate}
+  \item Was versteht man unter direkten Netzwerkeffekten. Warum liegen diese hier vor? 
+  \item Bestimmen Sie den indifferenten Konsumenten und skizzieren Sie die Nachfragekurve.
+Erklären und zeigen Sie, dass es mehrere Gleichgewichte gibt.
+  \item Bestimmen Sie die Menge, den Preis und den Gewinn des Monopolisten.
+  \item Interpretieren Sie die Ergebnisse.
+\end{enumerate}
+
+----------------------------------------------------------------
+
+(2) Bestimmen Sie den indifferenten Konsumenten und skizzieren Sie die Nachfragekurve. Erklären und zeigen Sie, dass es mehrere Gleichgewichte gibt.
+
+**Nutzen bei Konsum**: $U^x= n(1-x)-p$
+
+**Indifferenter Konsument**: $(1-\bar{x})\bar{x}-p=0$
+
+
+\begin{minipage}{0.5\textwidth}
+Nachfrage: $p=(1-\bar{x})\bar{x}$
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\includegraphics[scale=0.25]{figs/uebung2-1.png}
+\end{minipage}
+
+--------------------------------------------------------------
+
+(3) Bestimmen Sie die Menge, den Preis und den Gewinn des Monopolisten.
+
+\begin{minipage}{0.5\textwidth}
+Gewinn: $\pi=(1-x)x^2$
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\includegraphics[scale=0.3]{figs/uebung2-2.png}
+\end{minipage}
+
+$\frac{\delta \pi}{\delta x}=2(1-x)x-2x^2 \overset{!}=0$
+
+$x=\lbrace 0,\frac{2}{3} \rbrace$, $p=\lbrace 0,\frac{2}{9} \rbrace$, $\pi=\lbrace 0,\frac{4}{27} \rbrace$
+
+## Aufgabe 2: Monopolistische Plattform I
 
 Ein Zeitungsmonopolist bedient die beiden Kundengruppen ‚Leser‘ und ‚Anzeigenkunden‘. $q$ sei die
 Menge an verkauften Zeitungen und $p$ der Preis pro Zeitung. $s$ sei die Menge der verkauften Anzeigen
@@ -51,7 +104,7 @@ $p=1-q-0.2s$ und $r=1-s+1.2q$
 \end{enumerate}
 
 
-## Aufgabe 1.1: Monopolistische Plattform I
+## Aufgabe 2.1: Monopolistische Plattform I
 
 1. Interpretieren Sie die angegebenen Nachfragefunktionen mit grafischer Hilfe.
 
@@ -133,7 +186,7 @@ ggplot(data=df, aes(q,p)) +
 \href{https://localize.shinyapps.io/vl5_app/}{\textcolor{blue}{\textbf{Zur Simulation}}}
 \end{center}
 
-## Aufgabe 1.2: Monopolistische Plattform I
+## Aufgabe 2.2: Monopolistische Plattform I
 
 2. Stellen Sie die Gewinnfunktion des monopolistischen Anbieters auf.
 
@@ -153,7 +206,7 @@ $\pi=(p-c)q+(r-c)s+F$
 $\pi=(1-q-0.2s-c)q+(1-s+1.2q-c)s+F$
 \end{center}
 
-## Aufgabe 1.3: Monopolistische Plattform I
+## Aufgabe 2.3: Monopolistische Plattform I
 
 3. Bestimmen Sie die optimalen Mengen als Reaktion auf die jeweils andere Marktgröße.
 
@@ -179,7 +232,7 @@ $s = \frac{1-c}{2}+\frac{1}{2}q$
   \end{itemize}
 \end{tiny}
 
-## Aufgabe 1.4: Monopolistische Plattform II
+## Aufgabe 2.4: Monopolistische Plattform II
 
 4. Stellen Sie die optimalen Preise $p, r$ grafisch dar.
 
@@ -211,7 +264,7 @@ ggplot(data=df, aes(q,p)) +
   theme(text = element_text(size=14))
 ```
 
-## Aufgabe 1.5: Monopolistische Plattform II
+## Aufgabe 2.5: Monopolistische Plattform II
 
 5. Berechnen Sie die optimalen Preise $p, r$ und Mengen $q, s$
 
@@ -237,7 +290,7 @@ $p^*=1-(1-c)-0.2(1-c) = -0.2+1.2c$
 $r^*=1-(1-c)+1.2(1-c) = 1.2-0.2c$
 \end{center}
 
-## Aufgabe 2: Monopolistische Plattform II
+## Aufgabe 3: Monopolistische Plattform II
 
 1. Berechnen Sie die Konsumentenrente und die Produzentenrente für $c=0$
 
@@ -280,7 +333,7 @@ p2 <- ggplot(data=df, aes(s,r)) +
 p1+p2
 ```
 
-## Aufgabe 2.1: Monopolistische Plattform II
+## Aufgabe 3.1: Monopolistische Plattform II
 
 1. Berechnen Sie die Konsumentenrente und die Produzentenrente.
 
