@@ -1,0 +1,10 @@
+name: vl5_app
+title:
+username:
+account: localize
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 250961
+bundleId: 1222939
+url: https://localize.shinyapps.io/vl5_app/
+when: 1518623912.89096
