@@ -1,0 +1,298 @@
+---
+title: "Ökonomik digitaler Märkte"
+subtitle: "Problemset 4 - Lösung"
+author: Franziska Löw
+date: 01.03.2018
+output: 
+  beamer_presentation:
+    slide_level: 2
+    theme: "CambridgeUS"
+    colortheme: "dolphin"
+    fonttheme: "structurebold"
+    fig_caption: false
+    fig_width: 4.4
+    fig_height: 2.8
+header-includes:
+- \usepackage{amsmath}
+- \usepackage[utf8]{inputenc}
+- \usepackage{tcolorbox}
+    
+---
+
+```{r include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(patchwork)
+
+library(RColorBrewer)
+
+col <- brewer.pal(6, "Set1")
+
+```
+
+## Aufgabe 1: Monopolistische Plattform 
+
+Eine monopolistische zweiseitige Plattform hat folgende indirekte Nachfragefunktionen:
+
+\begin{center}
+$p=100-q-ds$ und $r=100-s+gq$
+\end{center}
+
+und die Kostenfunktion: $K(q,s) = cq+cs$
+
+Wobei $q$ und $s$ die Mengen und $p$ und $r$ die Preise auf den jeweiligen Märkten sind.
+
+-----------------------------------------------------------------------------
+
+\begin{center}
+$p=100-q-ds$ und $r=100-s+gq$
+\end{center}
+
+
+![Monopol](figs/VL5-1.png)
+
+-----------------------------------------------------------------------------
+
+Stellen Sie die Gewinnfunktion auf berechnen Sie die optimalen Mengen $q$ und $s$ auf den beiden Märkten.
+
+Gewinnfunktion:
+\begin{center}
+$\pi=(p-c)q+(r-c)s+F$
+
+$\pi=(100-q-ds-c)q+(1-s+gq-c)s$
+\end{center}
+
+\begin{center}
+$\frac{\delta \pi}{\delta q}=100-2q-ds-c+gs \overset{!}= 0 $
+
+$\frac{\delta \pi}{\delta s}=-dq+100-2s+gq-c \overset{!}= 0$
+\end{center}
+
+
+---------------------------------------------------------------------------
+
+Stellen Sie die Gewinnfunktion auf berechnen Sie die optimalen Mengen $q$ und $s$ auf den beiden Märkten. Interpretieren Sie den Einfluss der Parameter $d$ und $g$.
+
+Nach $q$ bzw. $s$ umstellen:
+
+\begin{center}
+$q = \frac{100-c}{2}+\frac{g-d}{2}s$
+$s = \frac{100-c}{2}+\frac{g-d}{2}q$
+\end{center}
+
+$s$ in $q$ einsetzen ergibt:
+ 
+\begin{center}
+$q^* = \frac{100-c}{2-(g-d)} = s^*$ 
+\end{center}
+
+----------------------------------------------------------------------------
+
+\begin{center}
+$q^* = \frac{100-c}{2-(g-d)}$ 
+\end{center}
+
+```{r echo=FALSE, fig.align="center", fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+d <- 0.2
+
+mengen <- function(g){
+  100/(2-((-d)+g))
+  }
+
+x <- c()
+count <- 1
+
+for (i in seq(-2,2,0.01)) {
+  x[count] <- mengen(i)
+  count <- count + 1
+}
+
+### Create Dataframe
+df <- data.frame(g = seq(-2,2,0.01),
+                 q = x,
+                 s = x,
+                 d = -0.2)
+
+ggplot(data=df, aes(g,q)) + 
+  geom_line() + 
+  scale_x_continuous(expand = c(0, 0),
+                      limits = c(-1,2),
+                     breaks = c(0,0.2,1,2)) +
+  geom_hline(yintercept = 50, color=col[1],
+             linetype = 2, size = 0.3) +
+  geom_vline(xintercept = 0.2, linetype = 2,
+             color = col[1], size = 0.3) +
+  labs(title= "Optimale Mengen für d=0.2",x="g",y="Mengen (q,s)") 
+```
+
+## Aufgabe 1 b)
+
+Berechnen Sie die optimalen Preise $p$ und $r$ auf den beiden Märkten. 
+
+$q^*$ und $s^*$ in inverse Nachfragefunktionen einsetzen:
+
+\begin{center}
+$p^*=100-(\frac{100-c}{2-(g-d)})-d(\frac{100-c}{2-(g-d)}) = \frac{100-100g+dc+c}{2-(g-d)}$ 
+
+$r^*=100-(\frac{100-c}{2-(g-d)})+g(\frac{100-c}{2-(g-d)}) = \frac{100-100d-gc+c}{2-(g-d)}$
+\end{center}
+
+---------------------------------------------------------------------------------------
+
+Stellen Sie den Preis $p$ als Preiskostenaufschlag dar. Wann liegt der Preis $p$ unterhalb der Grenzkosten?
+
+$p^*$ mit c erweitern: $p^*= \frac{(100-c)(1-g)}{2-(g-d)}$ 
+
+```{r echo=FALSE, fig.align="center", fig.height=4, fig.width=8, message=FALSE, warning=FALSE}
+d <- 0.2
+c <- 0
+
+preise <- function(g){
+  c+((100-c)*(1-g))/(2-((-d)+g))
+  }
+
+x <- c()
+count <- 1
+
+for (i in seq(-2,2,0.01)) {
+  x[count] <- preise(i)
+  count <- count + 1
+}
+
+### Create Dataframe
+df <- data.frame(g = seq(-2,2,0.01),
+                 p = x)
+
+p1 <- ggplot(data=df, aes(g,p)) + 
+  geom_line() +
+  geom_hline(yintercept = c,
+             linetype = 2) +
+  geom_vline(xintercept = 1, linetype = 2,
+             color = col[1]) +
+  scale_x_continuous(expand = c(0, 0),
+                      limits = c(0,1.5)) +
+    scale_y_continuous(expand = c(0, 0),
+                      limits = c(-100,100)) +
+  labs(title= paste("c =",c),x="g (d=0.2)",y="p") 
+
+#---------- c = 40 ----------#
+c <- 40
+
+x <- c()
+count <- 1
+
+for (i in seq(-2,2,0.01)) {
+  x[count] <- preise(i)
+  count <- count + 1
+}
+
+### Create Dataframe
+df <- data.frame(g = seq(-2,2,0.01),
+                 p = x)
+
+p2 <- ggplot(data=df, aes(g,p)) + 
+  geom_line() +
+  geom_hline(yintercept = c,
+             linetype = 2) +
+    geom_vline(xintercept = 1, linetype = 2,
+             color = col[1]) +
+  scale_x_continuous(expand = c(0, 0),
+                      limits = c(0,1.5)) +
+    scale_y_continuous(expand = c(0, 0),
+                      limits = c(-100,100)) +
+  labs(title= paste("c =",c),x="g (d=0.2)") +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.title.y = element_blank())
+
+#---------- c = 90 ----------#
+c <- 90
+
+x <- c()
+count <- 1
+
+for (i in seq(-2,2,0.01)) {
+  x[count] <- preise(i)
+  count <- count + 1
+}
+
+### Create Dataframe
+df <- data.frame(g = seq(-2,2,0.01),
+                 p = x)
+
+p3 <- ggplot(data=df, aes(g,p)) + 
+  geom_line() +
+  geom_hline(yintercept = c,
+             linetype = 2) +
+    geom_vline(xintercept = 1, linetype = 2,
+             color = col[1]) +
+  scale_x_continuous(expand = c(0, 0),
+                      limits = c(0,1.5)) +
+    scale_y_continuous(expand = c(0, 0),
+                      limits = c(-100,100)) +
+  labs(title= paste("c =",c),x="g (d=0.2)",y="p") +
+    theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.title.y = element_blank())
+
+p1 + p2 + p3
+```
+
+--------------------------------------------------------------------------
+
+**Ist das ein Problem aus wettbewerbsökonomischer Sicht?**
+
+* Wenn $p \neq c$ dann geht man in der Theorie davon aus, dass der Markt sich nicht im Optimum befindet. 
+
+    * Bei $p > c$: Monopolmärkte
+    * Bei $p < c$: Predatory pricing, Verdrängungswettbewerb (Beispiel Lufthansa / Air Berlin)
+
+* Wenn indirekte Netzwerkeffekte vorliegen kann es aber optimal sein (bzw. die Konsumentenrente maximiert sein), wenn auf einer Marktseite ein Preis unterhalt den Grenzkosten vorliegt da nur so die IDE optimal ausgenutzt werden können. 
+
+--------------------------------------------------------------------------
+
+Nehmen Sie an, dass $d=0.2$ und $g=1$. Nennen Sie ein Praxisbeispiel für einen solchen Fall. Wie hoch sind die Preise? 
+
+\begin{center}
+$p=100-q-0.2s$ und $r=100-s+q$
+\end{center}
+
+**Mengen**
+
+\begin{center}
+$q^* = \frac{100-c}{2-(g-d)} = \frac{100-c}{1.2}$
+
+$s^* = \frac{100-c}{2-(g-d)} = \frac{100-c}{1.2}$
+\end{center}
+
+**Preise**
+\begin{center}
+$p^*= \frac{100-100g+dc+c}{2-(g-d)} = 1c$ 
+
+$r^* = \frac{100-100d-gc+c}{2-(g-d)} = 100$
+\end{center}
+
+
+--------------------------------------------------------------------------
+
+Was ändert sich, wenn $d$ auf $0.2$ ansteigt? Interpretieren Sie vor allem die Auswirkungen auf den Preis $p$.
+
+\begin{center}
+$p=100-q+0.2s$ und $r=100-s+q$
+\end{center}
+
+**Mengen**
+
+\begin{center}
+$q^* = \frac{100-c}{2-(g-d)} = \frac{100-c}{0.8}$
+
+$s^* = \frac{100-c}{2-(g-d)} = \frac{100-c}{0.8}$
+\end{center}
+
+**Preise**
+\begin{center}
+$p^*= \frac{100-100g+dc+c}{2-(g-d)} = 1c$ 
+
+$r^* = \frac{100-100d-gc+c}{2-(g-d)} = 100$
+\end{center}
+
