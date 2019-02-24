@@ -1,8 +1,8 @@
 ---
 title: "Ökonomik digitaler Märkte"
-subtitle: "Problemset 3: Monopolistische Plattform - Lösung"
+subtitle: "Problemset 3 - Duopolistische Plattformen"
 author: Franziska Löw
-date: 15.02.2018
+date: 01.03.2019
 output: 
   beamer_presentation:
     slide_level: 2
@@ -23,8 +23,6 @@ header-includes:
 library(ggplot2)
 library(dplyr)
 library(patchwork)
-library(shiny)
-library(htmlwidgets)
 
 library(RColorBrewer)
 
@@ -32,38 +30,56 @@ col <- brewer.pal(6, "Set1")
 
 ```
 
-## Aufgabe 1: Monopolistische Plattform I
+## Aufgabe 1: Duopole auf Plattform-Märkten
 
-Ein Zeitungsmonopolist bedient die beiden Kundengruppen ‚Leser‘ und ‚Anzeigenkunden‘. $q$ sei die
-Menge an verkauften Zeitungen und $p$ der Preis pro Zeitung. $s$ sei die Menge der verkauften Anzeigen
-zum Preis $r$. Die variablen Kosten des Monopolisten sind $c1 = c2 = c$. Die Fixkosten betragen 0. Die
-inversen Nachfragen nach $q$ bzw. $s$ lauten:
+Betrachten Sie den folgenden zweiseitigen Markt mit zwei Unternehmen ($i=1,2$). Die inversen Nachfragefunktionen für die beiden Unternehmen lauten:
 
-\begin{center}
-$p=1-q-0.2s$ und $r=1-s+1.2q$
-\end{center}
-
-\begin{enumerate}
-  \item Interpretieren Sie die angegebenen Nachfragefunktionen mit grafischer Hilfe.
-  \item Stellen Sie die Gewinnfunktion des monopolistischen Anbieters auf.
-  \item Bestimmen Sie die optimalen Mengen als Reaktion auf die jeweils andere Marktgröße.
-  \item Stellen Sie die optimalen Preise $p, r$ grafisch dar.
-  \item Berechnen Sie die optimalen Preise $p, r$ und Mengen $q, s$
-\end{enumerate}
-
-
-## Aufgabe 2: Monopolistische Plattform II
-
-Ein Zeitungsmonopolist bedient die beiden Kundengruppen ‚Leser‘ und ‚Anzeigenkunden‘. $q$ sei die
-Menge an verkauften Zeitungen und $p$ der Preis pro Zeitung. $s$ sei die Menge der verkauften Anzeigen
-zum Preis $r$. Die variablen Kosten des Monopolisten sind $c1 = c2 = 0$. Die Fixkosten betragen 0. Die
-inversen Nachfragen nach $q$ bzw. $s$ lauten:
+**Markt 1**
 
 \begin{center}
-$p=1-q-0.2s$ und $r=1-s+1.2q$
+$p_1=1-q_1-q_2+ds_1$ und $p_2=1-q_1-q_2+ds_2$
 \end{center}
 
-\begin{enumerate}
-  \item Berechnen Sie die Konsumentenrente und die Produzentenrente.
-\end{enumerate}
+**Markt 2**
+
+\begin{center}
+$r_1=1-s_1-s_2+gq_1$ und $r_2=1-s_1-s_2+gq_2$
+\end{center}
+
+wobei $p_1, p_2$ der Preis und $q_1, q_2$ die Ausbringungsmenge auf Markt 1 von Unternehmen 1 bzw. Unternehmen 2 seien. Gleiches gilt für die Preise $r_1, r_2$ und Mengen $s_1, s_2$ auf Markt 2.
+
+## Aufgabe 1: Duopole auf Plattform-Märkten
+
+a) Interpretieren Sie die Nachfragefunktionen.
+
+b) Stellen Sie die Gewinnfunktion auf und leiten Sie diese nach $q_1, q_2, s_1, s_2$ ab. Interpretieren Sie die Reaktionsfunktionen von Markt 1 anhand einer geeigneten Grafik.
+
+c) Berechnen Sie die Mengen der Unternehmen, die Gesamtmenge für jeden Markt ($Q$ und $S$) und die Preise.
+
+d) Nehmen Sie nun an, dass beide Unternehmen zu einem Monopolisten fusionieren. Berechnen Sie den Gewinn des Monopolisten.
+
+e) Setzen Sie folgende Werte für d und g ein und vergleichen Sie die Ergebnisse zwischen Duopol und Monopol.
+
+## Aufgabe 2: Monopolistische Plattform 
+
+Eine monopolistische zweiseitige Plattform hat folgende indirekte Nachfragefunktionen:
+
+\begin{center}
+$p=100-q-ds$ und $r=100-s+gq$
+\end{center}
+
+und die Kostenfunktion: $K(q,s) = cq+cs$
+
+Wobei $q$ und $s$ die Mengen und $p$ und $r$ die Preise auf den jeweiligen Märkten sind.
+
+## Aufgabe 2: Monopolistische Plattform 
+
+1. Stellen Sie die Gewinnfunktion auf berechnen Sie die optimalen Mengen $q$ und $s$ auf den beiden Märkten. Interpretieren Sie den Einfluss der Parameter $d$ und $g$.
+
+2. Berechnen Sie die optimalen Preise $p$ und $r$ auf den beiden Märkten. 
+
+3. Stellen Sie den Preis $p$ als Preiskostenaufschlag dar. Wann liegt der Preis $p$ unterhalb der Grenzkosten?
+    a) Ist das ein Problem aus wettbewerbsökonomischer Sicht?
+    b) Was ändert sich, wenn $d$ auf $0.2$ ansteigt? Interpretieren Sie vor allem die Auswirkungen auf den Preis $p$.
+
 
