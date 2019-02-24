@@ -2,7 +2,7 @@
 title: "Ökonomik digitaler Märkte"
 subtitle: "Problemset 1: mikroökonomische Grundlagen - Lösung"
 author: Franziska Löw
-date: 18.01.2018
+date: 01.02.2019
 output: 
   beamer_presentation:
     theme: "CambridgeUS"
